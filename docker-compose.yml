@@ -1,0 +1,20 @@
+services:
+  pytorch:
+    image: s1n7ax/pytorch-jupyter
+    build: .
+    volumes:
+      - ./notes:/notes
+      - ./data:/data
+    ports:
+      - 8888:8888
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: cdi
+              device_ids:
+                - nvidia.com/gpu=all
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Etc/UTC
