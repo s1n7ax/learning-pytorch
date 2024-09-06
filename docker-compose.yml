@@ -3,8 +3,10 @@ services:
     image: s1n7ax/pytorch-jupyter
     build: .
     volumes:
+      - ./.jupyter/config:/root/.jupyter
+      - ./.jupyter/data:/root/.local/share/jupyter
+      - ./.jupyter/runtime:/root/.local/share/jupyter/runtime
       - ./notes:/notes
-      - ./data:/data
     ports:
       - 8888:8888
     deploy:
